@@ -1,0 +1,14 @@
+.table-card {
+  margin: auto;
+  width: 80%;
+  top: 20px;
+  border: 2px solid black;
+}
+
+.total-price {
+  border: 1px solid black;
+  display: block;
+  box-shadow: 1px 1px 1px 1px grey;
+  font-weight: 400;
+  font-size: large;
+}
