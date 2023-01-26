@@ -1,4 +1,7 @@
+import { isFakeTouchstartFromScreenReader } from '@angular/cdk/a11y';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ApiService } from '../service/api.service';
 import { CartService } from '../service/cart.service';
 
 @Component({
@@ -7,15 +10,21 @@ import { CartService } from '../service/cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  dataSource!: any;
   displayedColumns: string[] = ['image', 'title', 'price', 'action'];
-  totalPrice: number = 0;
+  dataSource!: MatTableDataSource<any>;
 
   constructor(private cartService: CartService) {}
 
-  ngOnInit() {
-    this.dataSource = this.cartService.getCart();
-    this.totalPrice = this.cartService.getTotalPrice();
-    console.log(this.dataSource);
+  ngOnInit(): void {
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    this.dataSource = new MatTableDataSource(this.cartService.getCartItems());
+  }
+
+  removeItem(product: any) {
+    this.cartService.removeItem(product);
+    this.getCartItems();
   }
 }

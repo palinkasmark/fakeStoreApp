@@ -1,4 +1,4 @@
-.toolbar-container {
-    display: flex;
-    justify-content: space-between;
-  }
+.title {
+  width: 100%;
+  text-align: center;
+}

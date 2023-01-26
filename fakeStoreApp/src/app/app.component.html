@@ -1,21 +1,11 @@
-<mat-toolbar color="primary" class="toolbar-container">
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
+<mat-toolbar color="primary">
+  <button mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <button
-    [routerLink]="['/']"
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
+  <button [routerLink]="['/']" mat-icon-button>
     <mat-icon>home</mat-icon>
   </button>
-  <span>Fake Store</span>
-  <!-- <span class="example-spacer"></span> -->
+  <span class="title">Fake Store</span>
   <button [routerLink]="['cart']" mat-icon-button>
     <mat-icon>shopping_cart</mat-icon>
   </button>

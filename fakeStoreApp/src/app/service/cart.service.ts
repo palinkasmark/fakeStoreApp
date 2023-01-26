@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cart: any[] = [];
+  cartItems: any[] = [];
 
   constructor() {}
 
   addToCart(product: any) {
-    this.cart.push(product);
+    this.cartItems.push(product);
   }
 
-  getCart(): any[] {
-    return this.cart;
+  getCartItems() {
+    return this.cartItems;
   }
 
-  getTotalPrice(): number {
-    let totalPrice = 0;
-    for (let product of this.cart) {
-      totalPrice += product.price;
-    }
-    return totalPrice;
+  removeItem(product: any) {
+    this.cartItems.forEach((element, index) => {
+      if (element === product) {
+        this.cartItems.splice(index, 1);
+      }
+    });
   }
 }
