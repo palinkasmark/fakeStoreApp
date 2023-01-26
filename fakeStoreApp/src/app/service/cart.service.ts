@@ -24,4 +24,12 @@ export class CartService {
       }
     });
   }
+
+  getTotalPrice(): number {
+    let totalPrice = 0;
+    this.cartItems.forEach((item) => {
+      totalPrice += item.price;
+    });
+    return totalPrice;
+  }
 }

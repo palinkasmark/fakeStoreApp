@@ -12,6 +12,7 @@ import { CartService } from '../service/cart.service';
 export class CartComponent implements OnInit {
   displayedColumns: string[] = ['image', 'title', 'price', 'action'];
   dataSource!: MatTableDataSource<any>;
+  totalPrice: number = 0;
 
   constructor(private cartService: CartService) {}
 
@@ -21,6 +22,7 @@ export class CartComponent implements OnInit {
 
   getCartItems() {
     this.dataSource = new MatTableDataSource(this.cartService.getCartItems());
+    this.totalPrice = this.cartService.getTotalPrice();
   }
 
   removeItem(product: any) {
