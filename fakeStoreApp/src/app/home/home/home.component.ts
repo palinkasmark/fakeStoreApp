@@ -10,7 +10,6 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class HomeComponent implements OnInit {
   products: any;
-
   constructor(
     private apiService: ApiService,
     private cartService: CartService

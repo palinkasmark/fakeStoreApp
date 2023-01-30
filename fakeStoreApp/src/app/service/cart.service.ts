@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   cartItems: any[] = [];
+  obsCart = new BehaviorSubject<any>([]);
 
   constructor() {}
 
   addToCart(product: any) {
     this.cartItems.push(product);
+    this.obsCart.next(this.cartItems);
   }
 
   getCartItems() {
@@ -23,6 +25,7 @@ export class CartService {
         this.cartItems.splice(index, 1);
       }
     });
+    this.obsCart.next(this.cartItems);
   }
 
   getTotalPrice(): number {
@@ -31,5 +34,9 @@ export class CartService {
       totalPrice += item.price;
     });
     return totalPrice;
+  }
+
+  getObsCart(): Observable<any> {
+    return this.obsCart;
   }
 }

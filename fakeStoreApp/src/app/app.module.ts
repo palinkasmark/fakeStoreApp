@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CartComponent],
@@ -27,6 +28,7 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     RouterModule,
     MatTableModule,
+    MatBadgeModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],
