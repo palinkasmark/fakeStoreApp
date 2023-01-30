@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import { RouterModule } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CartComponent],
@@ -29,6 +30,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     RouterModule,
     MatTableModule,
     MatBadgeModule,
+    MatProgressSpinnerModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

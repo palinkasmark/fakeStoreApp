@@ -25,6 +25,7 @@ export class CartService {
         this.cartItems.splice(index, 1);
       }
     });
+
     this.obsCart.next(this.cartItems);
   }
 
