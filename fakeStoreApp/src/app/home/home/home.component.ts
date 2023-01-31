@@ -17,11 +17,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getAllProducts().subscribe((res) => {
+      res.forEach((element: any) => {
+        element.price = Math.round(element.price);
+      });
       this.products = res;
     });
   }
 
   addToCart(product: any) {
     this.cartService.addToCart(product);
+    console.log(product);
   }
 }

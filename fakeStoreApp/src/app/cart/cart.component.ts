@@ -10,7 +10,13 @@ import { CartService } from '../service/cart.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  displayedColumns: string[] = ['image', 'title', 'price', 'action'];
+  displayedColumns: string[] = [
+    'image',
+    'title',
+    'quantity',
+    'price',
+    'action',
+  ];
   dataSource!: MatTableDataSource<any>;
   totalPrice: number = 0;
 
@@ -28,5 +34,17 @@ export class CartComponent implements OnInit {
   removeItem(product: any) {
     this.cartService.removeItem(product);
     this.getCartItems();
+  }
+
+  increase(product: any) {
+    product.quantity += 1;
+    this.totalPrice = this.cartService.getTotalPrice();
+  }
+  decrease(product: any) {
+    product.quantity -= 1;
+    if (product.quantity < 1) {
+      product.quantity = 1;
+    }
+    this.totalPrice = this.cartService.getTotalPrice();
   }
 }

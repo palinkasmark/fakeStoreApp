@@ -11,6 +11,7 @@ export class CartService {
   constructor() {}
 
   addToCart(product: any) {
+    product.quantity = 1;
     this.cartItems.push(product);
     this.obsCart.next(this.cartItems);
   }
@@ -32,7 +33,7 @@ export class CartService {
   getTotalPrice(): number {
     let totalPrice = 0;
     this.cartItems.forEach((item) => {
-      totalPrice += item.price;
+      totalPrice += item.price * item.quantity;
     });
     return totalPrice;
   }

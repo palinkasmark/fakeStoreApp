@@ -12,3 +12,15 @@
   font-weight: 400;
   font-size: large;
 }
+
+th,
+td,
+table {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.add-btn,
+.minus-btn {
+  display: inline;
+}
