@@ -19,13 +19,23 @@
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef>Quantity</th>
         <td mat-cell *matCellDef="let element">
-          <button class="add-btn" (click)="increase(element)" mat-icon-button>
-            <mat-icon>add</mat-icon>
-          </button>
-          <input type="number" value="{{ element.quantity }}" />
-          <button class="minus-btn" (click)="decrease(element)" mat-icon-button>
-            <mat-icon>remove</mat-icon>
-          </button>
+          <div class="quantity-container">
+            <button class="add-btn" (click)="increase(element)" mat-icon-button>
+              <mat-icon>add</mat-icon>
+            </button>
+            <input
+              type="text"
+              class="quantity"
+              value="{{ element.quantity }}"
+            />
+            <button
+              class="minus-btn"
+              (click)="decrease(element)"
+              mat-icon-button
+            >
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
         </td>
       </ng-container>
 
