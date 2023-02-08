@@ -6,10 +6,74 @@
     <mat-icon>home</mat-icon>
   </button>
   <span class="title">Fake Store</span>
-  <button [routerLink]="['cart']" mat-icon-button>
+  <!-- <button [routerLink]="['cart']" mat-icon-button>
+    <mat-icon [matBadge]="cartSize" matBadgeColor="warn"
+      >shopping_cart</mat-icon
+    >
+  </button> -->
+
+  <!-- <button mat-button [matMenuTriggerFor]="menu">Menu</button> -->
+  <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon [matBadge]="cartSize" matBadgeColor="warn"
       >shopping_cart</mat-icon
     >
   </button>
+
+  <mat-menu #menu="matMenu">
+    <div (click)="$event.stopPropagation()">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef>Image</th>
+          <td mat-cell *matCellDef="let element">
+            <img
+              style="width: 45px; border: 0.2px solid black"
+              src="{{ element.image }}"
+            />
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let element" class="cart-title">
+            {{ element.title }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let element">${{ element.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="removeItem(element)" mat-icon-button color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-card>
+        <div class="card-footer">
+          <mat-card-content class="total-price"
+            >Total Price: ${{ totalPrice }}</mat-card-content
+          >
+          <button
+            class="checkout"
+            mat-raised-button
+            color="accent"
+            [routerLink]="['cart']"
+            (click)="closeMenu()"
+          >
+            Checkout
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

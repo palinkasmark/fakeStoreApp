@@ -16,6 +16,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CartComponent],
@@ -33,6 +36,9 @@ import { MatInputModule } from '@angular/material/input';
     MatBadgeModule,
     MatProgressSpinnerModule,
     MatInputModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatListModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],
