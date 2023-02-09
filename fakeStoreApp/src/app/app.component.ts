@@ -1,16 +1,7 @@
-import { OverlayContainer } from '@angular/cdk/overlay';
-import {
-  Component,
-  DoCheck,
-  IterableDiffers,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Observable, of } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { ApiService } from './service/api.service';
 import { CartService } from './service/cart.service';
 
 @Component({
@@ -31,10 +22,11 @@ export class AppComponent implements OnInit {
   ];
   dataSource!: MatTableDataSource<any>;
   totalPrice: number = 0;
+  categories: string[] = [];
 
   @ViewChild(MatMenuTrigger) menu!: MatMenuTrigger;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private api: ApiService) {}
 
   ngOnInit(): void {
     this.cartService.getObsCart().subscribe((res) => {
@@ -42,6 +34,12 @@ export class AppComponent implements OnInit {
       this.cartSize = res.length;
       this.totalPrice = this.cartService.getTotalPrice();
     });
+    this.api.getCategories().subscribe((res) => {
+      setTimeout(() => {
+        this.categories = res;
+      }, 2000);
+    });
+    console.log(this.categories);
   }
 
   removeItem(product: any) {
