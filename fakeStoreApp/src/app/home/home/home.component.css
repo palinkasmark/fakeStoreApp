@@ -1,11 +1,8 @@
-/* .example-spacer {
-  flex: 1 1 auto;
-} */
-
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: lightgray;
 }
 
 .spinner-container {
@@ -14,6 +11,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  background-color: lightgray;
 }
 
 .card-container {

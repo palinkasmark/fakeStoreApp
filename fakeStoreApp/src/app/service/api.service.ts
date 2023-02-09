@@ -21,4 +21,8 @@ export class ApiService {
   // deleteProduct(id: number): Observable<any> {
   //   return this.http.delete<any>(this.baseUrl + 'products/' + id);
   // }
+
+  getCategories(): Observable<any> {
+    return this.http.get<any>('https://fakestoreapi.com/products/categories');
+  }
 }

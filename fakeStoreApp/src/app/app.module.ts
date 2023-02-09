@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CartComponent],
@@ -39,6 +40,7 @@ import { MatListModule } from '@angular/material/list';
     MatExpansionModule,
     MatMenuModule,
     MatListModule,
+    MatSidenavModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

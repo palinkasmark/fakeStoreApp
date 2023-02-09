@@ -50,3 +50,16 @@ td {
   justify-content: center;
   align-items: center;
 }
+
+.toolbar {
+  height: 60px;
+}
+
+.drawer-container {
+  height: 100%;
+}
+.sidenav {
+  border: 2px solid red;
+  width: auto;
+  height: calc(100vh - 60px);
+}
