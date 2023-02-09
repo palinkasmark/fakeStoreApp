@@ -23,32 +23,20 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    // this.getCartItems();
     this.cartService.getObsCart().subscribe((res) => {
       this.dataSource = new MatTableDataSource(this.cartService.getCartItems());
       this.totalPrice = this.cartService.getTotalPrice();
     });
   }
 
-  // getCartItems() {
-  //   this.dataSource = new MatTableDataSource(this.cartService.getCartItems());
-  //   this.totalPrice = this.cartService.getTotalPrice();
-  // }
-
   removeItem(product: any) {
     this.cartService.removeItem(product);
-    // this.getCartItems();
   }
 
   increase(product: any) {
-    product.quantity += 1;
-    this.totalPrice = this.cartService.getTotalPrice();
+    this.cartService.increase(product);
   }
   decrease(product: any) {
-    product.quantity -= 1;
-    if (product.quantity < 1) {
-      product.quantity = 1;
-    }
-    this.totalPrice = this.cartService.getTotalPrice();
+    this.cartService.decrease(product);
   }
 }

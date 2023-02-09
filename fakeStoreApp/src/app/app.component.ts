@@ -22,7 +22,13 @@ export class AppComponent implements OnInit {
   title = 'fakeStoreApp';
   cartSize: number = 0;
 
-  displayedColumns: string[] = ['image', 'title', 'price', 'action'];
+  displayedColumns: string[] = [
+    'image',
+    'title',
+    'quantity',
+    'price',
+    'action',
+  ];
   dataSource!: MatTableDataSource<any>;
   totalPrice: number = 0;
 
@@ -32,21 +38,25 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.getObsCart().subscribe((res) => {
+      this.dataSource = new MatTableDataSource(this.cartService.getCartItems());
       this.cartSize = res.length;
       this.totalPrice = this.cartService.getTotalPrice();
-      this.getCartItems();
     });
-  }
-
-  getCartItems() {
-    this.dataSource = new MatTableDataSource(this.cartService.getCartItems());
   }
 
   removeItem(product: any) {
     this.cartService.removeItem(product);
-    this.totalPrice = this.cartService.getTotalPrice();
   }
+
   closeMenu() {
     this.menu.closeMenu();
+  }
+
+  increase(product: any) {
+    this.cartService.increase(product);
+  }
+
+  decrease(product: any) {
+    this.cartService.decrease(product);
   }
 }

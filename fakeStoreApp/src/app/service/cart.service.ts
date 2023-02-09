@@ -41,4 +41,17 @@ export class CartService {
   getObsCart(): Observable<any> {
     return this.obsCart;
   }
+
+  increase(product: any) {
+    product.quantity += 1;
+    this.obsCart.next(this.cartItems);
+  }
+
+  decrease(product: any) {
+    product.quantity -= 1;
+    if (product.quantity < 1) {
+      product.quantity = 1;
+    }
+    this.obsCart.next(this.cartItems);
+  }
 }
