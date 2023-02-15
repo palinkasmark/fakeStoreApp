@@ -58,10 +58,10 @@ export class AppComponent implements OnInit {
     this.cartService.decrease(product);
   }
 
-  getCategory(category: string){
+  getCategory(category: string) {
     this.api.getProductByCategory(category).subscribe((res) => {
-      console.log("categories: " + res);
+      this.api.callChangeProduct = true;
       this.api.changeProduct(res);
-    })
+    });
   }
 }

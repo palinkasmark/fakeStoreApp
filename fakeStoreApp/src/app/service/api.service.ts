@@ -9,6 +9,7 @@ export class ApiService {
   baseUrl: string = 'https://fakestoreapi.com/';
 
   products = new BehaviorSubject([]);
+  callChangeProduct: boolean = false;
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +36,6 @@ export class ApiService {
   getProductByCategory(category: string): Observable<any> {
     return this.http.get<any>(
       'https://fakestoreapi.com/products/category/' + category
-    )
+    );
   }
 }

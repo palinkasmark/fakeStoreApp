@@ -56,12 +56,12 @@ td {
 }
 
 .drawer-container {
-  height: 100%;
+  height: calc(100vh - 60px); /* 60px is toolbar height */
 }
 .sidenav {
   border: 2px solid red;
   width: 180px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 60px); /* 60px is toolbar height */
 }
 
 .sidenav-spinner {
@@ -72,7 +72,7 @@ td {
   width: auto;
 }
 
-.category{
+.category {
   display: flex;
   justify-content: center;
   margin: 5px;

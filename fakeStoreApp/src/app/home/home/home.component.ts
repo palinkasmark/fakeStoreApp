@@ -9,8 +9,9 @@ import { CartService } from 'src/app/service/cart.service';
 })
 export class HomeComponent implements OnInit {
   products: any;
+
   constructor(
-    private apiService: ApiService,
+    protected apiService: ApiService,
     private cartService: CartService
   ) {}
 
@@ -22,14 +23,14 @@ export class HomeComponent implements OnInit {
       this.products = res;
     });
 
-    setTimeout(() => {
-      this.apiService.changeProduct(this.products);
-      console.log(this.apiService.products.value);
-      this.apiService.products.subscribe((res) =>{
-        console.log("product: " + res);
-        this.products = res;
-      })
-    }, 5000);
+    this.apiService.products.subscribe((res) => {
+      setTimeout(() => {
+        if (this.apiService.products.value.length !== 0) {
+          this.products = res;
+          this.apiService.callChangeProduct = false;
+        }
+      }, 2000);
+    });
   }
 
   addToCart(product: any) {

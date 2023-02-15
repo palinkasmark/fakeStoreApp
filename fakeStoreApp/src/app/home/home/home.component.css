@@ -3,6 +3,8 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: lightgray;
+  height: auto;
+  min-height: 100%;
 }
 
 .spinner-container {
@@ -21,6 +23,7 @@
   border-radius: 20px;
   box-shadow: 2.5px 5px grey;
   background-color: whitesmoke;
+  height: 384px;
 }
 
 .add-to-cart-btn {
