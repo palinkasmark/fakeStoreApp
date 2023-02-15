@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
         this.categories = res;
       }, 2000);
     });
-    console.log(this.categories);
+    // console.log(this.categories);
   }
 
   removeItem(product: any) {
@@ -56,5 +56,12 @@ export class AppComponent implements OnInit {
 
   decrease(product: any) {
     this.cartService.decrease(product);
+  }
+
+  getCategory(category: string){
+    this.api.getProductByCategory(category).subscribe((res) => {
+      console.log("categories: " + res);
+      this.api.changeProduct(res);
+    })
   }
 }

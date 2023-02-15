@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,13 @@ import { Observable } from 'rxjs';
 export class ApiService {
   baseUrl: string = 'https://fakestoreapi.com/';
 
+  products = new BehaviorSubject([]);
+
   constructor(private http: HttpClient) {}
+
+  changeProduct(products: any) {
+    this.products.next(products);
+  }
 
   getAllProducts(): Observable<any> {
     return this.http.get<any>(this.baseUrl + 'products');
@@ -24,5 +30,11 @@ export class ApiService {
 
   getCategories(): Observable<any> {
     return this.http.get<any>('https://fakestoreapi.com/products/categories');
+  }
+
+  getProductByCategory(category: string): Observable<any> {
+    return this.http.get<any>(
+      'https://fakestoreapi.com/products/category/' + category
+    )
   }
 }

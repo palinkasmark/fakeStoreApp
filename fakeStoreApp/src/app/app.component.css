@@ -60,7 +60,7 @@ td {
 }
 .sidenav {
   border: 2px solid red;
-  width: auto;
+  width: 180px;
   height: calc(100vh - 60px);
 }
 
@@ -70,4 +70,10 @@ td {
   align-items: center;
   height: 100%;
   width: auto;
+}
+
+.category{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
 }

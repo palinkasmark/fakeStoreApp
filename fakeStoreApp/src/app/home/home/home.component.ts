@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 
@@ -22,6 +21,15 @@ export class HomeComponent implements OnInit {
       });
       this.products = res;
     });
+
+    setTimeout(() => {
+      this.apiService.changeProduct(this.products);
+      console.log(this.apiService.products.value);
+      this.apiService.products.subscribe((res) =>{
+        console.log("product: " + res);
+        this.products = res;
+      })
+    }, 5000);
   }
 
   addToCart(product: any) {
