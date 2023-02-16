@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { MatDrawerContainer } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
 import { ApiService } from './service/api.service';
 import { CartService } from './service/cart.service';
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
   categories: string[] = [];
 
   @ViewChild(MatMenuTrigger) menu!: MatMenuTrigger;
+  @ViewChild(MatDrawerContainer) drawer!: MatDrawerContainer;
 
   constructor(private cartService: CartService, private api: ApiService) {}
 
@@ -35,9 +37,7 @@ export class AppComponent implements OnInit {
       this.totalPrice = this.cartService.getTotalPrice();
     });
     this.api.getCategories().subscribe((res) => {
-      setTimeout(() => {
-        this.categories = res;
-      }, 2000);
+      this.categories = res;
     });
     // console.log(this.categories);
   }
@@ -59,8 +59,9 @@ export class AppComponent implements OnInit {
   }
 
   getCategory(category: string) {
+    this.api.callChangeProduct = true;
+    this.drawer.close();
     this.api.getProductByCategory(category).subscribe((res) => {
-      this.api.callChangeProduct = true;
       this.api.changeProduct(res);
     });
   }

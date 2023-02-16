@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
           this.products = res;
           this.apiService.callChangeProduct = false;
         }
-      }, 2000);
+      }, 500);
     });
   }
 
