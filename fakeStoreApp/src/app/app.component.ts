@@ -3,6 +3,7 @@ import { MatIconButton } from '@angular/material/button';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDrawerContainer } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ApiService } from './service/api.service';
 import { CartService } from './service/cart.service';
 
@@ -29,7 +30,11 @@ export class AppComponent implements OnInit {
   @ViewChild(MatMenuTrigger) menu!: MatMenuTrigger;
   @ViewChild(MatDrawerContainer) drawer!: MatDrawerContainer;
 
-  constructor(private cartService: CartService, private api: ApiService) {}
+  constructor(
+    private cartService: CartService,
+    private api: ApiService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.cartService.getObsCart().subscribe((res) => {
@@ -63,6 +68,14 @@ export class AppComponent implements OnInit {
     this.drawer.close();
     this.api.getProductByCategory(category).subscribe((res) => {
       this.api.changeProduct(res);
+    });
+  }
+
+  goHome() {
+    this.api.callChangeProduct = true;
+    this.api.getAllProducts().subscribe((res) => {
+      this.api.changeProduct(res);
+      this.router.navigate(['/']);
     });
   }
 }
