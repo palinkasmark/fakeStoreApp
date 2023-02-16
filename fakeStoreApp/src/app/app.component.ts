@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatIconButton } from '@angular/material/button';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDrawerContainer } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
@@ -39,7 +40,6 @@ export class AppComponent implements OnInit {
     this.api.getCategories().subscribe((res) => {
       this.categories = res;
     });
-    // console.log(this.categories);
   }
 
   removeItem(product: any) {

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="toolbar">
-  <button mat-icon-button (click)="drawer.toggle()">
+  <button onclick="this.blur()" mat-icon-button (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
   <button [routerLink]="['/']" mat-icon-button>
@@ -98,13 +98,13 @@
 </mat-toolbar>
 
 <mat-drawer-container class="drawer-container">
-  <mat-drawer #drawer class="sidenav">
+  <mat-drawer #drawer [autoFocus]="false" class="sidenav">
     <div class="sidenav-spinner" *ngIf="categories.length === 0">
       <mat-spinner></mat-spinner>
     </div>
     <div class="category" *ngFor="let category of categories">
       <button mat-button (click)="getCategory(category)">
-        {{ category }}
+        {{ category | titlecase }}
       </button>
     </div>
   </mat-drawer>
