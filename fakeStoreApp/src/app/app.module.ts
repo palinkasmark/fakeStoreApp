@@ -20,6 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CartComponent],
@@ -41,6 +42,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatMenuModule,
     MatListModule,
     MatSidenavModule,
+    FormsModule,
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

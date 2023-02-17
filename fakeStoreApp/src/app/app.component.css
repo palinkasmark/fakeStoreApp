@@ -77,3 +77,47 @@ td {
   justify-content: center;
   margin: 5px;
 }
+
+.search-form {
+  height: 35px;
+}
+.search-input {
+  margin-top: 10px;
+}
+
+.search-cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::ng-deep.mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: black !important;
+}
+
+::ng-deep.mdc-text-field--filled {
+  border-radius: 20px !important;
+  background-color: unset !important;
+}
+
+::ng-deep.mdc-text-field {
+  display: block !important;
+}
+
+::ng-deep.mat-mdc-form-field-bottom-align::before {
+  display: none !important;
+}
+
+::ng-deep
+  .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(
+    .mdc-text-field--textarea
+  )
+  .mat-mdc-form-field-infix {
+  padding: 0 !important;
+}
+
+::ng-deep
+  .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined)
+  .mat-mdc-form-field-infix {
+  padding: 0 !important;
+}

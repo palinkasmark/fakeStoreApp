@@ -20,10 +20,12 @@ export class HomeComponent implements OnInit {
       res.forEach((element: any) => {
         element.price = Math.round(element.price);
       });
+      console.log('Nem pedig ez');
       this.products = res;
     });
 
     this.apiService.products.subscribe((res) => {
+      console.log('Szerintem ez fut le');
       setTimeout(() => {
         if (this.apiService.products.value.length !== 0) {
           this.products = res;

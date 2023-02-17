@@ -1,9 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDrawerContainer } from '@angular/material/sidenav';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { ApiService } from './service/api.service';
 import { CartService } from './service/cart.service';
 
@@ -26,6 +33,7 @@ export class AppComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   totalPrice: number = 0;
   categories: string[] = [];
+  search: any;
 
   @ViewChild(MatMenuTrigger) menu!: MatMenuTrigger;
   @ViewChild(MatDrawerContainer) drawer!: MatDrawerContainer;
@@ -44,6 +52,15 @@ export class AppComponent implements OnInit {
     });
     this.api.getCategories().subscribe((res) => {
       this.categories = res;
+    });
+  }
+
+  searchProduct(event: any) {
+    this.api.callChangeProduct = true;
+    this.api.getAllProducts().subscribe((res) => {
+      this.api.changeProduct(
+        res.filter((product: any) => product.title.includes(event))
+      );
     });
   }
 
