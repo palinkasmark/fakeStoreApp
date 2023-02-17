@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
     this.initProduct();
 
     this.apiService.products.subscribe((res) => {
-      console.log(this.subscription.closed);
       setTimeout(() => {
         if (this.apiService.products.value.length !== 0) {
           this.subscription.unsubscribe();
